@@ -14,7 +14,7 @@ const User = mongoose.model(
       {
         emp_id :{
           type: mongoose.Schema.Types.ObjectId,
-          ref: "Role",
+          ref: "Employee",
         },
         title: {
           type: String,
