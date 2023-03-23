@@ -12,7 +12,7 @@ const User = mongoose.model(
         ref: "Role",
       }
     ],
-    creteria: [
+    criteria: [
       {
         emp_id :{
           type: mongoose.Schema.Types.ObjectId,

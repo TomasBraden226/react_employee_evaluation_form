@@ -24,7 +24,7 @@ exports.createUser = (req, res) => {
     username: req.body.username,
     email: req.body.email,
     password: bcrypt.hashSync("12345678", 8), // Set default password as "12345678"
-    creteria: req.body.creteria
+    criteria: req.body.criteria
   });
   user.save((err, user) => {
     if (err) {
@@ -87,7 +87,7 @@ exports.updateUser = (req, res) => {
         username: req.body.username,
         email: req.body.email,
         password: bcrypt.hashSync(req.body.password, 8), 
-        creteria: req.body.creteria
+        criteria: req.body.criteria
       };
       console.log(newUser);
       User.findByIdAndUpdate(req.body.userId, newUser, { new: true })
