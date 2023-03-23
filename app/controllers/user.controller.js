@@ -9,6 +9,7 @@ var bcrypt = require("bcryptjs");
 exports.allUsers = (req, res) => {
   console.log("req made on" + req.url);
   User.find()
+    .populate('roles')
     .sort({ createdAt: -1 }) //it will find all data and show it in descending order
     .then((result) => {
       res.status(200).json(result);
@@ -23,6 +24,7 @@ exports.createUser = (req, res) => {
     username: req.body.username,
     email: req.body.email,
     password: bcrypt.hashSync("12345678", 8), // Set default password as "12345678"
+    creteria: req.body.creteria
   });
   user.save((err, user) => {
     if (err) {
@@ -85,6 +87,7 @@ exports.updateUser = (req, res) => {
         username: req.body.username,
         email: req.body.email,
         password: bcrypt.hashSync(req.body.password, 8), 
+        creteria: req.body.creteria
       };
       console.log(newUser);
       User.findByIdAndUpdate(req.body.userId, newUser, { new: true })

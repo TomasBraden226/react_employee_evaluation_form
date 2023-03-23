@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 
-const MainDepartment = mongoose.model(
-  "MainDepartment",
+const MainDep = mongoose.model(
+  "MainDep",
   new mongoose.Schema({
     name: String
   }, { timestamps: true })
 );
 
-module.exports = MainDepartment;
+module.exports = MainDep;

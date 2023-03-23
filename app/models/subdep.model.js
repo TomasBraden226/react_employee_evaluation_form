@@ -1,14 +1,14 @@
 const mongoose = require("mongoose");
 
-const SubDepartment = mongoose.model(
-  "SubDepartment",
+const SubDep = mongoose.model(
+  "SubDep",
   new mongoose.Schema({
     name: String,
     main_dep_id: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "MainDepartment",
+      ref: "MainDep",
     }
   }, { timestamps: true })
 );
 
-module.exports = SubDepartment;
+module.exports = SubDep;
