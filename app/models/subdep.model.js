@@ -8,7 +8,7 @@ const SubDepartment = mongoose.model(
       type: mongoose.Schema.Types.ObjectId,
       ref: "MainDepartment",
     }
-  })
+  }, { timestamps: true })
 );
 
 module.exports = SubDepartment;

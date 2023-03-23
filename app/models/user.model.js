@@ -6,10 +6,12 @@ const User = mongoose.model(
     username: String,
     email: String,
     password: String,
-    roles: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Role",
-    },
+    roles: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Role",
+      }
+    ],
     Creteria: [
       {
         emp_id :{
@@ -26,7 +28,7 @@ const User = mongoose.model(
         }
       }
     ] 
-  })
+  }, { timestamps: true })
 );
 
 module.exports = User;

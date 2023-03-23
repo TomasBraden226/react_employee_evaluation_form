@@ -12,7 +12,7 @@ const Employee = mongoose.model(
       type: mongoose.Schema.Types.ObjectId,
       ref: "SubDepartment",
     },
-  })
+  }, { timestamps: true })
 );
 
 module.exports = Employee;

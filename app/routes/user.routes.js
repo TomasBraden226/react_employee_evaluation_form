@@ -1,28 +1,41 @@
 const { authJwt } = require("../middlewares");
+const { verifySignUp } = require("../middlewares");
 const controller = require("../controllers/user.controller");
 
-module.exports = function(app) {
-  app.use(function(req, res, next) {
-    res.header(
-      "Access-Control-Allow-Headers",
-      "Origin, Content-Type, Accept"
-    );
+module.exports = function (app) {
+  app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Headers", "Origin, Content-Type, Accept");
     next();
   });
 
-  app.get("/api/test/all", controller.allAccess);
-
-  app.get("/api/test/user", [authJwt.verifyToken], controller.userBoard);
-
+  //Get all users data
   app.get(
-    "/api/test/mod",
-    [authJwt.verifyToken, authJwt.isModerator],
-    controller.moderatorBoard
+    "/api/users",
+    [authJwt.verifyToken, authJwt.isAdmin],
+    controller.allUsers
   );
 
-  app.get(
-    "/api/test/admin",
+  //Create user
+  app.post(
+    "/api/user/create",
     [authJwt.verifyToken, authJwt.isAdmin],
-    controller.adminBoard
+    [
+      verifySignUp.checkDuplicateUsernameOrEmail,
+      verifySignUp.checkRolesExisted,
+    ],
+    controller.createUser
+  );
+
+  //Create user
+  app.post(
+    "/api/user/update",
+    [authJwt.verifyToken, authJwt.isAdmin],
+    controller.updateUser
+  );
+
+  app.delete(
+    "/api/user/delete",
+    [authJwt.verifyToken, authJwt.isAdmin],
+    controller.deleteUser
   );
 };
