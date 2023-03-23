@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
@@ -48,7 +48,12 @@ const Login = () => {
     if (checkBtn.current.context._errors.length === 0) {
       AuthService.login(username, password).then(
         () => {
-          navigate("/profile");
+          if (true) {
+            navigate("/evaluator");
+          } else {
+            navigate("/profile");
+          }
+          
           window.location.reload();
         },
         (error) => {
@@ -67,6 +72,17 @@ const Login = () => {
       setLoading(false);
     }
   };
+
+
+  useEffect(() => {
+    const user = AuthService.getCurrentUser();
+
+    if (user) {
+      navigate("/profile");
+    } else {
+      navigate("/login");
+    }
+  }, []);
 
   return (
     <div className="col-md-12">
