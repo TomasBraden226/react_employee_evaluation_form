@@ -6,12 +6,26 @@ const User = mongoose.model(
     username: String,
     email: String,
     password: String,
-    roles: [
+    roles: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Role",
+    },
+    Creteria: [
       {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Role"
+        emp_id :{
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Employee",
+        },
+        title: {
+          type: String,
+          default: "Undefined"
+        },
+        grade: {
+          type: Number,
+          default: 5
+        }
       }
-    ]
+    ] 
   })
 );
 
