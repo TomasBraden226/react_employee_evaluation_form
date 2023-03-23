@@ -7,9 +7,25 @@ const User = mongoose.model(
     email: String,
     password: String,
     roles: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Role"
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Role",
+    },
+    Creteria: [
+      {
+        emp_id :{
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Role",
+        },
+        title: {
+          type: String,
+          default: "Undefined"
+        },
+        grade: {
+          type: Number,
+          default: 5
+        }
       }
+    ] 
   })
 );
 
