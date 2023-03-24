@@ -26,7 +26,7 @@ module.exports = function (app) {
     controller.createUser
   );
 
-  //Create user
+  //Update user
   app.post(
     "/api/user/update",
     [authJwt.verifyToken, authJwt.isAdmin],
