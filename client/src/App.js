@@ -48,7 +48,7 @@ const App = () => {
 
   return (
     <div>
-      <nav className="navbar navbar-expand navbar-dark bg-dark">
+      <nav className="navbar navbar-expand navbar-dark" style={{backgroundColor: 'rgb(103, 58, 183)'}}>
         <Link to={"/"} className="navbar-brand">
           bezKoder
         </Link>
