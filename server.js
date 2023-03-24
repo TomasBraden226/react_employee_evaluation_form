@@ -6,17 +6,18 @@ const dbConfig = require("./app/config/db.config");
 
 const app = express();
 
-var corsOptions = {
-  origin: "http://localhost:8081"
-};
+// var corsOptions = {
+//   origin: "http://localhost:8081"
+// };
 
-app.use(cors(corsOptions));
 
 // parse requests of content-type - application/json
 app.use(express.json());
 
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
+
+app.use(cors());
 
 app.use(
   cookieSession({

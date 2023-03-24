@@ -51,7 +51,7 @@ const Login = () => {
           if (true) {
             navigate("/evaluator");
           } else {
-            navigate("/profile");
+            navigate("/evaluator");
           }
           
           window.location.reload();
@@ -78,7 +78,7 @@ const Login = () => {
     const user = AuthService.getCurrentUser();
 
     if (user) {
-      navigate("/profile");
+      navigate("/evaluator");
     } else {
       navigate("/login");
     }
